@@ -6,7 +6,7 @@
 int main() {
     int stop;
     const Graph graph(5, 5, 150);
-    const auto route = GeneticAlgorithm::solveTSP(graph.getMatrix(), 3, 3, 3);
+    const auto route = GeneticAlgorithm::solveTSP(graph.getMatrix(), 3, 5, 0.5);
     std::cout << "Distance: " << route->getDistance();
     for (const auto point : route->getRoute()) {
         std::cout << ' ' << point;

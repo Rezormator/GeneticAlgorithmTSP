@@ -31,13 +31,13 @@ void Route::generateRoute(const matrixi *matrix) {
     route.push_back(0);
     std::ranges::reverse(route);
     route.push_back(0);
-    distance = calculateTotalDistance(matrix);
+    calculateTotalDistance(matrix);
 }
 
-int Route::calculateTotalDistance(const matrixi *matrix) const {
+void Route::calculateTotalDistance(const matrixi *matrix) {
     auto sum = 0;
     for (int i = 0; i < route.size() - 1; i++) {
         sum += (*matrix)[route[i]][route[i + 1]];
     }
-    return sum;
+    distance = sum;
 }

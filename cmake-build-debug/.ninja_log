@@ -17,3 +17,13 @@
 4	1263	7546739913036653	CMakeFiles/GeneticAlgorithmTSP.dir/main.cpp.obj	f2d737e0431738fc
 70	1739	7546739913692441	CMakeFiles/GeneticAlgorithmTSP.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.obj	c83f58fe026aa593
 1739	2508	7546739930377239	GeneticAlgorithmTSP.exe	64d348353d100235
+5	1919	7546783725689668	CMakeFiles/GeneticAlgorithmTSP.dir/main.cpp.obj	f2d737e0431738fc
+113	2028	7546783726767802	CMakeFiles/GeneticAlgorithmTSP.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.obj	c83f58fe026aa593
+159	2459	7546783727227807	CMakeFiles/GeneticAlgorithmTSP.dir/Route/Route.cpp.obj	5324950606a9febc
+2459	3204	7546783750223137	GeneticAlgorithmTSP.exe	64d348353d100235
+4	1537	7546785762472932	CMakeFiles/GeneticAlgorithmTSP.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.obj	c83f58fe026aa593
+1538	2239	7546785777815458	GeneticAlgorithmTSP.exe	64d348353d100235
+5	1369	7546786383325015	CMakeFiles/GeneticAlgorithmTSP.dir/main.cpp.obj	f2d737e0431738fc
+1369	2088	7546786396968741	GeneticAlgorithmTSP.exe	64d348353d100235
+5	1190	7546786776541997	CMakeFiles/GeneticAlgorithmTSP.dir/main.cpp.obj	f2d737e0431738fc
+1190	1885	7546786788390466	GeneticAlgorithmTSP.exe	64d348353d100235
