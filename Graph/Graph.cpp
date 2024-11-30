@@ -4,8 +4,12 @@
 
 Graph::Graph(const int size, const int minLenth, const int maxLenth)
 : size(size), minLenth(minLenth), maxLenth(maxLenth) {
-    const auto matrix = generateGraphMatrix(0.5, 0.5);
+    matrix = generateGraphMatrix(1, 0.5);
     printGraphMatrix(matrix);
+}
+
+std::vector<std::vector<int> > *Graph::getMatrix() const {
+    return matrix;
 }
 
 matrixi *Graph::generateGraphMatrix(const double connection, const double symmetry) const {
@@ -34,7 +38,15 @@ matrixi *Graph::generateGraphMatrix(const double connection, const double symmet
 void Graph::printGraphMatrix(const matrixi *matrix) const {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
-            std::cout << (*matrix)[i][j] << ' ';
+            if ((*matrix)[i][j] < 10) {
+                std::cout << '[' << (*matrix)[i][j] << "  ]";
+            }
+            else if ((*matrix)[i][j] < 100) {
+                std::cout << '[' << (*matrix)[i][j] << " ]";
+            }
+            else {
+                std::cout << '[' << (*matrix)[i][j] << ']';
+            }
         }
         std::cout << std::endl;
     }

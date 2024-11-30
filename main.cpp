@@ -1,7 +1,17 @@
 #include <iostream>
+
+#include "GeneticAlgorithm/GeneticAlgorithm.h"
 #include "Graph/Graph.h"
 
 int main() {
-    Graph(5, 1, 9);
+    int stop;
+    const Graph graph(5, 5, 150);
+    const auto route = GeneticAlgorithm::solveTSP(graph.getMatrix(), 3, 3, 3);
+    std::cout << "Distance: " << route->getDistance();
+    for (const auto point : route->getRoute()) {
+        std::cout << ' ' << point;
+    }
+    std::cout << std::endl;
+    std::cin >> stop;
     return 0;
 }

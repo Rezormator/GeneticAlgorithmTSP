@@ -67,6 +67,18 @@ build CMakeFiles/GeneticAlgorithmTSP.dir/Graph/Graph.cpp.obj: CXX_COMPILER__Gene
   OBJECT_DIR = CMakeFiles\GeneticAlgorithmTSP.dir
   OBJECT_FILE_DIR = CMakeFiles\GeneticAlgorithmTSP.dir\Graph
 
+build CMakeFiles/GeneticAlgorithmTSP.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.obj: CXX_COMPILER__GeneticAlgorithmTSP_unscanned_Debug D$:/Projects/Algorithms/GeneticAlgorithmTSP/GeneticAlgorithm/GeneticAlgorithm.cpp || cmake_object_order_depends_target_GeneticAlgorithmTSP
+  DEP_FILE = CMakeFiles\GeneticAlgorithmTSP.dir\GeneticAlgorithm\GeneticAlgorithm.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\GeneticAlgorithmTSP.dir
+  OBJECT_FILE_DIR = CMakeFiles\GeneticAlgorithmTSP.dir\GeneticAlgorithm
+
+build CMakeFiles/GeneticAlgorithmTSP.dir/Route/Route.cpp.obj: CXX_COMPILER__GeneticAlgorithmTSP_unscanned_Debug D$:/Projects/Algorithms/GeneticAlgorithmTSP/Route/Route.cpp || cmake_object_order_depends_target_GeneticAlgorithmTSP
+  DEP_FILE = CMakeFiles\GeneticAlgorithmTSP.dir\Route\Route.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\GeneticAlgorithmTSP.dir
+  OBJECT_FILE_DIR = CMakeFiles\GeneticAlgorithmTSP.dir\Route
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target GeneticAlgorithmTSP
@@ -75,7 +87,7 @@ build CMakeFiles/GeneticAlgorithmTSP.dir/Graph/Graph.cpp.obj: CXX_COMPILER__Gene
 #############################################
 # Link the executable GeneticAlgorithmTSP.exe
 
-build GeneticAlgorithmTSP.exe: CXX_EXECUTABLE_LINKER__GeneticAlgorithmTSP_Debug CMakeFiles/GeneticAlgorithmTSP.dir/main.cpp.obj CMakeFiles/GeneticAlgorithmTSP.dir/RandomGenerator/RandomGenerator.cpp.obj CMakeFiles/GeneticAlgorithmTSP.dir/Graph/Graph.cpp.obj
+build GeneticAlgorithmTSP.exe: CXX_EXECUTABLE_LINKER__GeneticAlgorithmTSP_Debug CMakeFiles/GeneticAlgorithmTSP.dir/main.cpp.obj CMakeFiles/GeneticAlgorithmTSP.dir/RandomGenerator/RandomGenerator.cpp.obj CMakeFiles/GeneticAlgorithmTSP.dir/Graph/Graph.cpp.obj CMakeFiles/GeneticAlgorithmTSP.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.obj CMakeFiles/GeneticAlgorithmTSP.dir/Route/Route.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\GeneticAlgorithmTSP.dir

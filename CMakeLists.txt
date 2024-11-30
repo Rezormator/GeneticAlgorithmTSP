@@ -8,4 +8,8 @@ add_executable(GeneticAlgorithmTSP main.cpp
         RandomGenerator/RandomGenerator.cpp
         Graph/Graph.h
         Graph/Graph.cpp
-        Utils.h)
+        Utils.h
+        GeneticAlgorithm/GeneticAlgorithm.h
+        GeneticAlgorithm/GeneticAlgorithm.cpp
+        Route/Route.h
+        Route/Route.cpp)
