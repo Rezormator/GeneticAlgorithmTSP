@@ -1,5 +1,4 @@
 #include "GeneticAlgorithm.h"
-#include <iostream>
 #include "../Population/Population.h"
 
 Route GeneticAlgorithm::solveTSP(const int populationSize, const int iterationsCount, const double mutationProbability) {
