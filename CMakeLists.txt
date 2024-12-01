@@ -6,10 +6,12 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(GeneticAlgorithmTSP main.cpp
         RandomGenerator/RandomGenerator.h
         RandomGenerator/RandomGenerator.cpp
-        Graph/Graph.h
-        Graph/Graph.cpp
         Utils.h
         GeneticAlgorithm/GeneticAlgorithm.h
         GeneticAlgorithm/GeneticAlgorithm.cpp
+        AdjacencyMatrix/AdjacencyMatrix.h
+        AdjacencyMatrix/AdjacencyMatrix.cpp
         Route/Route.h
-        Route/Route.cpp)
+        Route/Route.cpp
+        Population/Population.h
+        Population/Population.cpp)

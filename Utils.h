@@ -2,5 +2,5 @@
 
 #include <vector>
 
+#define matrix std::vector<std::vector<int>>
 #define NODISCARD [[nodiscard]]
-#define matrixi std::vector<std::vector<int>>
