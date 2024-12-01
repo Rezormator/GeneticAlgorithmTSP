@@ -4,5 +4,5 @@
 
 class GeneticAlgorithm {
 public:
-    static Route solveTSP(int populationSize, int iterationsCount, double mutationProbability);
+    static Route solveTSP(int populationSize, double mutationProbability, int iterationsCount, int goal = 0);
 };
