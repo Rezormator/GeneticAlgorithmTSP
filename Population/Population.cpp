@@ -31,11 +31,39 @@ std::pair<int, int> Population::selectParents() const {
 Route *Population::crossover(const std::pair<int, int> &parents) const {
     const auto firstParent = chromosomes[parents.first];
     const auto secondParent = chromosomes[parents.second];
-    // firstParent->print();
-    // secondParent->print();
-
     const auto routeSize = static_cast<int>(firstParent->getRoute().size());
+    Route *route;
+    switch (RandomGenerator::generateInt(1, 3)) {
+        case 1:
+            route = orderCrossover(firstParent, secondParent, routeSize);
+            break;
+        case 2:
+            route = halfCrossover(firstParent, secondParent, routeSize);
+            break;
+        default:
+            route = cycleCrossover(firstParent, secondParent, routeSize);
+            break;
+    }
+    return route;
+}
 
+void Population::addChromosome(Route *chromosome) {
+    chromosomes.push_back(chromosome);
+}
+
+void Population::deleteWorst() {
+    sort();
+    chromosomes.pop_back();
+}
+
+void Population::print() const {
+    for (const auto chromosome : chromosomes) {
+        chromosome->print();
+    }
+    std::cout << std::endl;
+}
+
+Route *Population::orderCrossover(const Route *firstParent, const Route *secondParent, const int routeSize) {
     auto startPosition = RandomGenerator::generateInt(1, routeSize - 2);
     auto endPosition = RandomGenerator::generateInt(1, routeSize - 2);
     if (startPosition > endPosition) {
@@ -59,24 +87,44 @@ Route *Population::crossover(const std::pair<int, int> &parents) const {
         route[currentPosition] = point;
     }
 
-    const auto child = new Route(route);
-    return child;
+    return new Route(route);
 }
 
-void Population::addChromosome(Route *chromosome) {
-    chromosomes.push_back(chromosome);
-}
-
-void Population::deleteWorst() {
-    sort();
-    chromosomes.pop_back();
-}
-
-void Population::print() const {
-    for (const auto chromosome : chromosomes) {
-        chromosome->print();
+Route* Population::halfCrossover(const Route* firstParent, const Route* secondParent, const int routeSize) {
+    std::vector route(routeSize, 0);
+    for (int i = 1; i < routeSize - 1; i += 2) {
+        route[i] = firstParent->getRoute()[i];
     }
-    std::cout << std::endl;
+    for (int i = 2; i < routeSize - 1; i += 2) {
+        const auto point = secondParent->getRoute()[i];
+        if (std::ranges::find(route, point) != route.end()) {
+            continue;
+        }
+        route[i] = point;
+    }
+    int currentPosition = 1;
+    for (int i = 1; i < routeSize - 1; i++) {
+        const auto point = secondParent->getRoute()[i];
+        if (std::ranges::find(route, point) != route.end()) {
+            continue;
+        }
+        while (route[currentPosition] != 0) {
+            currentPosition++;
+        }
+        route[currentPosition] = point;
+    }
+    return new Route(route);
+}
+
+Route *Population::cycleCrossover(const Route *firstParent, const Route *secondParent, const int routeSize) {
+    std::vector route(routeSize, 0);
+    const auto firstRoute = firstParent->getRoute();
+    const auto secondRoute = secondParent->getRoute();
+    for (int i = 1; i < routeSize - 1; i++) {
+        const auto position = std::distance(secondRoute.begin(), std::ranges::find(secondRoute, firstRoute[i]));
+        route[firstRoute[i]] = static_cast<int>(position);
+    }
+    return new Route(route);
 }
 
 void Population::sort() {

@@ -3,7 +3,6 @@
 #include <random>
 #include <algorithm>
 #include <iostream>
-
 #include "../RandomGenerator/RandomGenerator.h"
 
 Route::Route() {
@@ -30,16 +29,38 @@ int Route::getDistance() const {
 
 void Route::mutation(const double mutationProbability) {
     if (RandomGenerator::generateDouble(0, 1) <= mutationProbability) {
-        const auto size = static_cast<int>(route.size());
-        const auto firstPosition = RandomGenerator::generateInt(1, size - 2);
-        const auto secondPosition = RandomGenerator::generateInt(1, size - 2);
-        std::swap(route[firstPosition], route[secondPosition]);
+        if (RandomGenerator::generateInt(1, 2) == 1) {
+            oneGeneMutation();
+        }
+        else {
+            reverseMutation();
+        }
         calculateDistance();
-        // print();
     }
 }
 
+void Route::oneGeneMutation() {
+    const auto size = static_cast<int>(route.size());
+    const auto firstPosition = RandomGenerator::generateInt(1, size - 2);
+    const auto secondPosition = RandomGenerator::generateInt(1, size - 2);
+    std::swap(route[firstPosition], route[secondPosition]);
+}
+
+void Route::reverseMutation() {
+    std::ranges::reverse(route);
+}
+
 void Route::localImprovement() {
+    if (RandomGenerator::generateInt(1, 2) == 1) {
+        swapOneGeneLocalImprovement();
+    }
+    else {
+        swapTwoGenesLocalImprovement();
+    }
+    calculateDistance();
+}
+
+void Route::swapOneGeneLocalImprovement() {
     const auto improvedRoute = new Route(route);
     for (int i = 1; i < route.size() - 2; i++) {
         for (int j = i + 1; j < route.size() - 1; j++) {
@@ -49,7 +70,6 @@ void Route::localImprovement() {
             if (improvedRoute->distance < distance) {
                 this->setRoute(newRoute);
                 delete improvedRoute;
-                // print();
                 return;
             }
             std::swap(newRoute[i], newRoute[j]);
@@ -57,6 +77,12 @@ void Route::localImprovement() {
         }
     }
     delete improvedRoute;
+}
+
+void Route::swapTwoGenesLocalImprovement() {
+    for (int k = 0; k < 2; k++) {
+        swapOneGeneLocalImprovement();
+    }
 }
 
 void Route::print(const bool printRoute) const {

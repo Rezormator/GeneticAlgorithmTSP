@@ -9,6 +9,10 @@ private:
     int distance;
     void generateRoute();
     void calculateDistance();
+    void oneGeneMutation();
+    void reverseMutation();
+    void swapOneGeneLocalImprovement();
+    void swapTwoGenesLocalImprovement();
 public:
     explicit Route();
     explicit Route(const std::vector<int> &route);

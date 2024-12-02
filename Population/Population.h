@@ -10,6 +10,9 @@ private:
     void generatePopulation();
     NODISCARD std::vector<double> calculateProbabilityDistribution() const;
     NODISCARD static int getGeneIndex(const std::vector<double> &probabilityDistribution);
+    NODISCARD static Route *orderCrossover(const Route *firstParent, const Route *secondParent, int routeSize);
+    NODISCARD static Route *halfCrossover(const Route *firstParent, const Route *secondParent, int routeSize);
+    NODISCARD static Route *cycleCrossover(const Route *firstParent, const Route *secondParent, int routeSize);
 public:
     explicit Population(int size);
     ~Population();
