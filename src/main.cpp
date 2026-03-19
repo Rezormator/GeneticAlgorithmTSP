@@ -1,18 +1,24 @@
-#include "AdjacencyMatrix/AdjacencyMatrix.h"
-#include "Population/Population.h"
-#include "Chromosome/Chromosome.h"
-#include "GeneticAlgorithm/GeneticAlgorithm.h"
+#include <iostream>
+#include "Core/AdjacencyMatrixGenerator/AdjacencyMatrixGenerator.h"
+#include "Core/Evaluator/Evaluator.h"
+#include "ParallelGeneticAlgorithm/IslandGeneticAlgorithm/IslandGeneticAlgorithm.h"
+#include <chrono>
 
 int main() {
-    const auto adjacencyMatrix = new AdjacencyMatrix();
+    constexpr Configurations configurations;
 
-    GeneticAlgorithm::SetAdjacencyMatrix(adjacencyMatrix);
-    const auto population = new Population();
+    const auto adjacencyMatrix = AdjacencyMatrixGenerator::GenerateAdjacencyMatrix(configurations.cityCount);
 
-    GeneticAlgorithm::SolveTSP(10, 0.5, 1, 200, 2000);
+    const Evaluator evaluator(adjacencyMatrix);
 
-    delete adjacencyMatrix;
-    delete population;
+    IslandGeneticAlgorithm islandGeneticAlgorithm(4, configurations, evaluator);
+    const auto chromosome = islandGeneticAlgorithm.Run();
+
+    for (int i = 0; i < chromosome.genes.size() - 1; i++) {
+    std::cout << chromosome.genes[i] << " -> ";
+    }
+    std::cout << chromosome.genes[chromosome.genes.size() - 1] << std::endl;
+    std::cout << chromosome.fitness;
 
     return 0;
 }
