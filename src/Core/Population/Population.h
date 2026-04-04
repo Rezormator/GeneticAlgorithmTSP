@@ -7,6 +7,8 @@
 class Population {
 private:
     std::vector<Chromosome> chromosomes;
+    int bestChromosome;
+    int worstChromosome;
 public:
     explicit Population(int size);
 

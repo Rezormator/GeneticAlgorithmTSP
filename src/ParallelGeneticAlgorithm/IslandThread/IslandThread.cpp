@@ -31,7 +31,7 @@ void IslandThread::Run() {
         EvolveEpoch();
 
         const auto& best = population.GetBest();
-        if (configuration.goalFitness > 0 && best.fitness <= configuration.goalFitness) {
+        if (best.fitness <= configuration.goalFitness) {
             migrationManager.ReportGoalReached(best);
         }
 
@@ -46,8 +46,8 @@ void IslandThread::EvolveEpoch() {
     auto& chromosomes = population.GetChromosomes();
     const int size = static_cast<int>(chromosomes[0].genes.size());
 
-    for (int i = 0; i < configuration.epochIterations; i++) {
-
+    int iterationCount = 0;
+    do {
         auto probabilityDistribution = Operators::CalculateProbabilityDistribution(chromosomes);
         auto parents = Operators::SelectParentIndices(probabilityDistribution);
 
@@ -59,5 +59,5 @@ void IslandThread::EvolveEpoch() {
         Operators::LocalImprovement(child, configuration.improveProbability, evaluator);
 
         population.IntegrateChild(std::move(child));
-    }
+    } while (population.GetBest().fitness > configuration.goalFitness && iterationCount++ < configuration.epochIterations);
 }

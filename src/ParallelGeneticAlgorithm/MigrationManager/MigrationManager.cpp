@@ -59,24 +59,14 @@ void MigrationManager::OnEpochEnd() noexcept {
 }
 
 void MigrationManager::BuildSuperPopulation() {
-    std::vector<Chromosome *> all;
-    all.reserve(islandCount * populationSize);
-    for (auto *population: islandReferences) {
-        if (!population) {
-            continue;
-        }
-        for (auto &chromosome: population->GetChromosomes()) {
-            all.push_back(&chromosome);
-        }
+    superPopulation.clear();
+
+    for (int i = 0; i < islandCount; i++) {
+        superPopulation.push_back(islandReferences[i]->GetBest());
     }
 
-    const int takeCount = std::min(populationSize, static_cast<int>(all.size()));
-    std::ranges::partial_sort(all, all.begin() + takeCount, {}, &Chromosome::fitness);
-
-    superPopulation.clear();
-    superPopulation.reserve(takeCount);
-    for (int i = 0; i < takeCount; i++) {
-        superPopulation.push_back(*all[i]);
+    for (int i = islandCount; i < populationSize; i++) {
+        superPopulation.push_back(islandReferences[i % islandCount]->GetChromosomes()[Utils::GenerateInt(0, populationSize - 1)]);
     }
 }
 

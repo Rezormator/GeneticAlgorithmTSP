@@ -24,10 +24,9 @@ Chromosome IslandGeneticAlgorithm::Run() {
 
     best.fitness = std::numeric_limits<int>::max();
     for (const auto &islandThread: islands) {
-        for (const auto &chromosome: islandThread->GetPopulation().GetChromosomes()) {
-            if (chromosome.fitness < best.fitness) {
-                best = chromosome;
-            }
+        const auto &chromosome = islandThread->GetPopulation().GetBest();
+        if (chromosome.fitness < best.fitness) {
+            best = chromosome;
         }
     }
     return best;
