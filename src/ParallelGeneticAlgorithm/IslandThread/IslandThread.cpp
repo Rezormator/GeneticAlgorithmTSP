@@ -2,10 +2,10 @@
 #include "../../Core/Operators/Operators.h"
 
 IslandThread::IslandThread(const int id, const Configurations& configuration, const Evaluator& evaluator, MigrationManager& migrationManager)
-    : id(id), configuration(configuration), evaluator(evaluator), migrationManager(migrationManager), population(configuration.populationSize)
+    : id(id), configuration(configuration), evaluator(evaluator), migrationManager(migrationManager), population(configuration.parallelPopulationSize)
 {
     auto& chromosomes = population.GetChromosomes();
-    chromosomes.resize(configuration.populationSize);
+    chromosomes.resize(configuration.parallelPopulationSize);
     for (auto& chromosome : chromosomes) {
         Operators::GenerateRandomGenes(chromosome, configuration.cityCount);
         evaluator.Evaluate(chromosome);

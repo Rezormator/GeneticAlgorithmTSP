@@ -13,7 +13,7 @@ private:
 
     std::vector<std::unique_ptr<IslandThread> > islands;
 public:
-    explicit IslandGeneticAlgorithm(int islandCount, const Configurations &configurations, const Evaluator &evaluator);
+    explicit IslandGeneticAlgorithm(const Configurations &configurations, const Evaluator &evaluator);
 
     Chromosome Run();
 };

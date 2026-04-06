@@ -1,10 +1,9 @@
 #include "IslandGeneticAlgorithm.h"
-#include <limits>
 
-IslandGeneticAlgorithm::IslandGeneticAlgorithm(const int islandCount, const Configurations &configurations, const Evaluator &evaluator)
-    : evaluator(evaluator), migrationManager(islandCount, configurations.populationSize) {
-    islands.reserve(islandCount);
-    for (int i = 0; i < islandCount; i++) {
+IslandGeneticAlgorithm::IslandGeneticAlgorithm(const Configurations &configurations, const Evaluator &evaluator)
+    : evaluator(evaluator), migrationManager(configurations.treads, configurations.parallelPopulationSize) {
+    islands.reserve(configurations.treads);
+    for (int i = 0; i < configurations.treads; i++) {
         islands.push_back(std::make_unique<IslandThread>(i, configurations, evaluator, migrationManager));
     }
 }
@@ -22,7 +21,7 @@ Chromosome IslandGeneticAlgorithm::Run() {
         return best;
     }
 
-    best.fitness = std::numeric_limits<int>::max();
+    best.fitness = islands[0]->GetPopulation().GetBest().fitness;
     for (const auto &islandThread: islands) {
         const auto &chromosome = islandThread->GetPopulation().GetBest();
         if (chromosome.fitness < best.fitness) {

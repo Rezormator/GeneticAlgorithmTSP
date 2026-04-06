@@ -1,8 +1,5 @@
 #include "MigrationManager.h"
 
-#include <iostream>
-#include <bits/ranges_algo.h>
-
 MigrationManager::MigrationManager(const int islandCount, const int populationSize)
     : islandCount(islandCount),
       populationSize(populationSize),
@@ -61,7 +58,7 @@ void MigrationManager::OnEpochEnd() noexcept {
 void MigrationManager::BuildSuperPopulation() {
     superPopulation.clear();
 
-    for (int i = 0; i < islandCount; i++) {
+    for (int i = 0; i < islandCount && i < populationSize; i++) {
         superPopulation.push_back(islandReferences[i]->GetBest());
     }
 

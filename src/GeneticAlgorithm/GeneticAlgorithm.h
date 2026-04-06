@@ -1,7 +1,7 @@
 #pragma once
 #include "../Core/Evaluator/Evaluator.h"
 #include "../Core/Population/Population.h"
-#include "../ParallelGeneticAlgorithm/Configurations.h"
+#include "../Configurations.h"
 
 class GeneticAlgorithm {
 private:

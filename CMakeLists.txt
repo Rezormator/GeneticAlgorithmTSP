@@ -18,10 +18,12 @@ add_executable(GeneticAlgorithmTSP src/main.cpp
         src/Core/Operators/Operators.h
         src/ParallelGeneticAlgorithm/IslandThread/IslandThread.cpp
         src/ParallelGeneticAlgorithm/IslandThread/IslandThread.h
-        src/ParallelGeneticAlgorithm/Configurations.h
+        src/Configurations.h
         src/ParallelGeneticAlgorithm/MigrationManager/MigrationManager.cpp
         src/ParallelGeneticAlgorithm/MigrationManager/MigrationManager.h
         src/ParallelGeneticAlgorithm/IslandGeneticAlgorithm/IslandGeneticAlgorithm.cpp
         src/ParallelGeneticAlgorithm/IslandGeneticAlgorithm/IslandGeneticAlgorithm.h
         src/GeneticAlgorithm/GeneticAlgorithm.cpp
-        src/GeneticAlgorithm/GeneticAlgorithm.h)
+        src/GeneticAlgorithm/GeneticAlgorithm.h
+        src/Tests/Tests.cpp
+        src/Tests/Tests.h)

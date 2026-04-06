@@ -1,7 +1,7 @@
 #pragma once
 
 #include <thread>
-#include "../Configurations.h"
+#include "../../Configurations.h"
 #include "../../Core/Evaluator/Evaluator.h"
 #include "../../Core/Population/Population.h"
 #include "../MigrationManager/MigrationManager.h"
